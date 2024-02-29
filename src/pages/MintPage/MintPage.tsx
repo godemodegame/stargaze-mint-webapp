@@ -53,7 +53,7 @@ const MintPage = () => {
       return;
     }
     const response = await axios.post(
-        'http://localhost:8080/createMint', 
+        process.env.REACT_APP_BACKEND_URL + '/createMint', 
         { example: 'data' },
         { headers: { 'Content-Type': 'application/json' } }
     );
