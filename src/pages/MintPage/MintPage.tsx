@@ -54,6 +54,7 @@ const MintPage = () => {
         { date: date.toISOString(), address: address, price: price, amount: amount, initData: WebApp.initData },
         { headers: { 'Content-Type': 'application/json' } }
     );
+    response.data.success ? WebApp.showAlert("Mint created") : WebApp.showAlert("Mint failed");
   }
 
   return (
