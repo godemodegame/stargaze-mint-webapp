@@ -21,9 +21,7 @@ const MintPage = () => {
   const [amount, setAmount] = useState(1);
 
   async function mint() {
-    console.log(date, address, price, amount);
     if (address === null || address === undefined || address === "") {
-      console.log("Address is required", address);
       WebApp.showAlert("Address is required");
       return;
     }
@@ -49,15 +47,13 @@ const MintPage = () => {
     }
     if (date < dayjs()) {
       WebApp.showAlert("Date should be in the future");
-      console.log(date, dayjs());
       return;
     }
     const response = await axios.post(
         process.env.REACT_APP_BACKEND_URL + '/createMint', 
-        { example: 'data' },
+        { date: date.toISOString(), address: address, price: price, amount: amount, initData: WebApp.initData },
         { headers: { 'Content-Type': 'application/json' } }
     );
-    console.log(response);
   }
 
   return (
