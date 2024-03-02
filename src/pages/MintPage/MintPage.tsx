@@ -107,7 +107,8 @@ const MintPage = () => {
           <span className='span'></span>
           <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DateTimePicker 
-              label="Mint Time And Date" 
+              label="Mint Time And Date"
+              views={['year', 'month', 'day', 'hours', 'minutes', 'seconds']}
               value={date}
               onChange={(newDate) => setDate(newDate)}
             />
