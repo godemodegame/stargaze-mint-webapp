@@ -49,17 +49,24 @@ const MintPage = () => {
       WebApp.showAlert("Date should be in the future");
       return;
     }
-    const response = await axios.post(
+    axios.post(
         process.env.REACT_APP_BACKEND_URL + '/createMint', 
         { date: date.toISOString(), address: address, price: price, amount: amount, initData: WebApp.initData },
         { headers: { 'Content-Type': 'application/json' } }
-    );
-    console.log(response.data.success ? "Mint created" : "Mint failed");
-    response.data.success ? WebApp.showAlert("Mint created") : WebApp.showAlert("Mint failed");
+    ).then(response => {
+        WebApp.showAlert(response.data.success ? "Mint created" : "Mint failed", () => {
+            if (response.data.success) {
+                WebApp.close();
+            }
+        });
+    }).catch(error => {
+        console.log("Error: " + error);
+        WebApp.showAlert("Mint failed: " + error);
+    });
   }
 
   return (
-    <div className="App">
+    <div className="page">
       <div className="content">
         <h1>Auto-Mint NFT</h1>
         <ThemeProvider theme={{[THEME_ID]: Theme}}>

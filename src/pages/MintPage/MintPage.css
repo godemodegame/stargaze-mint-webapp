@@ -1,17 +1,17 @@
-.App {
+.page {
     background: var(--tg-theme-bg-color);
     color: var(--tg-theme-text-color);
     min-width: 100vw;
     min-height: 100vh;
-  }
+}
   
-  .content {
+.content {
     padding: 24px;
     flex-direction: column;
     display: flex;
     align-items: stretch;
-  }
+}
   
-  .span {
+.span {
     height: 20px;
-  }
+}
