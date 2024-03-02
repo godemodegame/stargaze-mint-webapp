@@ -1,0 +1,6 @@
+.page {
+    background: var(--tg-theme-bg-color);
+    color: var(--tg-theme-text-color);
+    min-width: 100vw;
+    min-height: 100vh;
+}
